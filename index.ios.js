@@ -14,8 +14,14 @@ var Weekdays = React.createClass({
 			<Text>
 				Days of the week :
 			</Text>
-			<DayItem day={DAYS[0]}/>
+			{this.renderDays()}
 		</View>
+	},
+
+	renderDays: function() {
+		return DAYS.map(function(day) {
+			return <DayItem key={day} day={day} />
+		});
 	}
 });
 
