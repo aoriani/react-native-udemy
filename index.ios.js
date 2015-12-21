@@ -4,6 +4,7 @@ const {
   Text,
   View,
   TouchableHighlight,
+  ScrollView,
   AppRegistry,
   StyleSheet
 } = React;
@@ -33,9 +34,9 @@ var StopWatch = React.createClass({
           </View>
         </View>
 
-        <View style={styles.footer}>
+        <ScrollView style={styles.footer}>
           {this.renderLaps()}
-        </View>
+        </ScrollView>
 
       </View> 
   },
@@ -68,7 +69,10 @@ var StopWatch = React.createClass({
       return;
     }
 
-    this.setState({startTime: new Date()});
+    this.setState({
+      startTime: new Date(),
+      laps: []
+    });
 
     this.interval = setInterval(() =>
       {
@@ -81,16 +85,18 @@ var StopWatch = React.createClass({
   },
 
   handleLapPress: function() {
-    var lap = this.state.timeElapsed;
-    this.setState({
-      startTime: new Date(),
-      laps: this.state.laps.concat([lap])
-    });
+    if (this.state.running) {
+      var lap = this.state.timeElapsed;
+      this.setState({
+        startTime: new Date(),
+        laps: this.state.laps.concat([lap])
+      });
+    }
   },
 
   renderLaps: function() {
     return this.state.laps.map((time, index) => 
-        <View style={styles.lap}>
+        <View key={index} style={styles.lap}>
           <Text style={styles.lapText}>Lap #{index + 1}</Text>
           <Text style={styles.lapText}>{formatTime(time)} </Text>
         </View>
