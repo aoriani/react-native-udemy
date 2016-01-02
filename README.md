@@ -1,4 +1,5 @@
-Weekday
+Build Apps with React Native
 =======
 
-An implementation of the first app from Udemy's "Build Apps with React Native" course
+These are my implemetations of the apps developed during the course. 
+They have some minor tweeks of mine like using `import` instead of `require`.
