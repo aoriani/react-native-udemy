@@ -1,13 +1,17 @@
 import React from 'react-native';
 import Signin from './components/authentication/signin';
+import Signup from './components/authentication/signup';
 import Parse from 'parse/react-native';
 
 var {
-	View,
-	Text,
-	StyleSheet
+	StyleSheet, 
+	Navigator
 } = React;
 
+const ROUTES = {
+	signin: Signin,
+	signup: Signup
+};
 
 var Main = React.createClass({
 
@@ -17,18 +21,24 @@ var Main = React.createClass({
 
 	},
 
+	renderScene: function(route, navigator) {
+		var Component = ROUTES[route.name];
+		return <Component route={route} navigator={navigator}/>
+	},
+
 	render: function() {
-		return <View style={styles.container} >
-			<Signin/>
-		</View>
+		return <Navigator 
+			style = {styles.container}
+			initialRoute = {{name: 'signin'}} 
+			renderScene = {this.renderScene} 
+			configureScene = { () => { return Navigator.SceneConfigs.FloatFromRight;} }  />
+
 	}
 });
 
 var styles = StyleSheet.create({
 	container : {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
+		flex: 1
 	}
 });
 

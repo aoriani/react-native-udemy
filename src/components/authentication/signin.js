@@ -34,16 +34,22 @@ module.exports = React.createClass({
 				           value={this.state.password}
 				           onChangeText={(text) => this.setState({password: text})}/>
 				<Text style={[styles.label, {color: 'red'}]}>{this.state.errorMessage}</Text>
-				<Button text={'Sign In'} onPress={this.onPress} />
+				<Button text={'Sign In'} onPress={this.onPressSignin} />
+				<Button text={'I need an account...'} onPress = {this.onPressSignup} />
 			</View>
 	},
 
-	onPress: function() {
+	onPressSignin: function() {
 		Parse.User.logIn(this.state.username, this.state.password, {
 			success: (user) => { console.log(user); },
 			error: (data, error) => { this.setState({errorMessage: error.message})}
 		});
+	},
+
+	onPressSignup: function() {
+		this.props.navigator.push({name: 'signup'});
 	}
+
 });
 
 var styles = StyleSheet.create({
