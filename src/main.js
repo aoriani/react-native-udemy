@@ -1,5 +1,7 @@
 import React from 'react-native';
-import Signin from './components/authentication/signin'
+import Signin from './components/authentication/signin';
+import Parse from 'parse/react-native';
+
 var {
 	View,
 	Text,
@@ -8,6 +10,13 @@ var {
 
 
 var Main = React.createClass({
+
+	componentWillMount: function() {
+		Parse.initialize("eXxdoYgPNV4Lu9emq334zeEvwaGur4WzgID4oF78",
+		 "btWyX2a3RLnUYaM7dafOskWxjEohGbm3zO9kHUJU");
+
+	},
+
 	render: function() {
 		return <View style={styles.container} >
 			<Signin/>
