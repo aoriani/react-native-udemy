@@ -1,0 +1,12 @@
+{
+  "name": "react_native_stopwatch",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "minutes-seconds-milliseconds": "^1.0.3",
+    "react-native": "^0.16.0"
+  }
+}
