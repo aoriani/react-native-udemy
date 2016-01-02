@@ -1,7 +1,9 @@
 import React from 'react-native';
+import Parse from 'parse/react-native';
+
 import Signin from './components/authentication/signin';
 import Signup from './components/authentication/signup';
-import Parse from 'parse/react-native';
+import Tweets from './components/tweets/tweets';
 
 var {
 	StyleSheet, 
@@ -10,7 +12,8 @@ var {
 
 const ROUTES = {
 	signin: Signin,
-	signup: Signup
+	signup: Signup,
+	tweets: Tweets
 };
 
 var Main = React.createClass({
